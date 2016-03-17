@@ -129,14 +129,17 @@ nav{
 $module-border-color:#fdbd5b;
 $module-bg: #f8f8f8;
 .module{
-  background-color: $bg-white;margin-bottom: $side-bottom-20;padding: 10px $side-lf-width;
+  background-color: $bg-white;margin-bottom: $side-bottom-20;padding: 10px $side-lf-width 0 $side-lf-width;
   h3{
-    border-bottom: 1px solid $default-border-color;color: $sub-color;margin-bottom: 10px;
+    border-bottom: 1px solid $default-border-color;color: $sub-color;padding-bottom: 10px;
   }
   @at-root .module-iterm{
+    /**/
     $module-aside-width:80px;
-    $module-span-height:(($module-aside-width)-10)/2;
-    position: relative;
+    $module-side:10px;
+    $module-span-height:(($module-aside-width)-($module-side))/2;
+    /**/
+    position: relative;margin-top:$module-side;margin-bottom:$module-side;
     aside{
       width:$module-aside-width;
       img{
@@ -144,9 +147,9 @@ $module-bg: #f8f8f8;
       }
     }
     article{
-      position: absolute;top:0;margin-left:$module-aside-width;right:0;
+      position: absolute;top:0;left:$module-aside-width;right:0;
     a{
-        display:inline-block;width:50%; float: left;margin-bottom:10px;padding-left:10px;
+        display:inline-block;width:50%; float: left;margin-bottom:$module-side;padding-left:$module-side;
       span{
         display: block; width:100%;background-color:$module-bg;text-align: center; line-height: $module-span-height;
       }
@@ -161,20 +164,24 @@ $module-bg: #f8f8f8;
 @media (min-width: 640px)
 {
   .module-iterm{
-    position: relative;
-    $module-aside-width:120px;
+    /**/
+    $module-aside-width:240px;
+    $module-side:20px;
+    $module-span-height:(($module-aside-width)-($module-side))/2;
+   /**/
+    margin-top:$module-side;margin-bottom:$module-side;
     aside{
-      width:$module-aside-width; overflow: hidden;
+      width:$module-aside-width;
       img{
-        width:100%; height: 100%;border: 1px solid $module-border-color;
+        width:$module-aside-width; height: $module-aside-width;border: 1px solid $module-border-color;
       }
     }
     article{
-      position: absolute;top:0;margin-left:$module-aside-width;right:0;
+      left:$module-aside-width;
       a{
-        display:inline-block;width:50%; float: left;margin-bottom: 5%;
+       margin-bottom:$module-side;padding-left:$module-side;
         span{
-          width:90%;background-color:$module-bg;margin-left:5%;height:0;padding-bottom: 25%; overflow: hidden; text-align: center;
+          line-height: $module-span-height;
         }
       }
 
