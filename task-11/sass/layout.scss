@@ -6,20 +6,32 @@ $go-back-width:100px;
 $nav-height:56px;
 $nav-border-bottom:4px;
 /**/
+$body-bg:#f5f5f5;
 $header-bg:#91d4da;
+$bg-white:#fff;
+
 $menu-dot-bg:#00c7d6;
 $nav-border-color:#90d6d8;
+$default-border-color:#dedede;
+
 /**/
 $color-white:#fff;
 $default-color:#333;
+$sub-color:#666;
 /**/
 $default-font-size:16px;
 /**/
+$side-lf-width:15px;
+$side-ud-width:22px;
+$side-ud-width-10:10px;
+$side-bottom-20:20px;
+/**/
 
 *{padding:0;margin:0; box-sizing: border-box;}
-body{margin:0;padding:0; font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif; color: $default-color;font-size: $default-font-size;}
+body{margin:0;padding:0; font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif; color: $default-color;font-size: $default-font-size; background-color: $body-bg;}
 img{vertical-align: middle; display: inline-block;border: 0;}
 ol,ul,li {list-style:none;}
+h1,h2,h3,h4,h5,h6{font-weight: normal;}
 /*移动端特有*/
 a, img {
   -webkit-touch-callout: none; /* 禁止长按链接与图片弹出菜单 */
@@ -28,7 +40,7 @@ html, body {
   -webkit-user-select: none;   /* 禁止选中文本（如无文本选中需求，此为必选项） */
   user-select: none;
 }
-/*移动端特有*/
+/*移动端特有 end*/
 .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
 .clearfix{*zoom:1;}
 .clear{clear: both;}
@@ -46,7 +58,7 @@ header{
   }
 }
 nav{
-  width:100%;
+  width:100%;background-color: $bg-white;
   ul{
     display: flex;width:100%;
     li{
@@ -66,34 +78,109 @@ nav{
     width:100%;
   }
 }
+.page-menu{
+  background-color: $bg-white;margin-bottom: $side-bottom-20;
+}
 .menu{
-  padding:22px 15px;
-  .page-menu{
+  margin:0 $side-lf-width;border-bottom: 1px solid $default-border-color;padding:$side-ud-width 0;
+  .sub-menu{
     display: flex;
     li{
-      flex-grow: 1;
-      span{
-        display: inline-block;
-        &.menu-dot{
-          width:100%;
-          img{
-            width:50%;
-          }
-        }
-        &.menu-tag{
-
+      flex-grow: 1;text-align: center;
+    }
+    a{
+      display: inline-block;
+    }
+    span{
+      display: block;
+      &.menu-dot{
+        background-color: $menu-dot-bg; border-radius:50%;width:70%;height:0;padding-bottom: 70%;overflow: hidden;margin-left: 15%;
+        img{
+          width:80%;margin-top:7.5%;
         }
       }
-
+      &.menu-tag{
+        text-align: center;margin-top:10px; line-height: 1.6;
+      }
+    }
+  }
+}
+.column{
+  padding:10px 0;
+  ul{
+    display: flex;
+    li{
+      flex-grow: 1;border-right:1px solid $default-border-color; text-align: center;
+    }
+    a{
+      width:50%; height: 100%;
+      img{
+        width:80%;
+      }
+      h4{
+        display: block;margin:5px auto;
+      }
+      h5{
+         display: block;color: $sub-color;
+      }
+    }
+  }
+}
+$module-border-color:#fdbd5b;
+$module-bg: #f8f8f8;
+.module{
+  background-color: $bg-white;margin-bottom: $side-bottom-20;padding: 10px $side-lf-width;
+  h3{
+    border-bottom: 1px solid $default-border-color;color: $sub-color;margin-bottom: 10px;
+  }
+  @at-root .module-iterm{
+    $module-aside-width:80px;
+    $module-span-height:(($module-aside-width)-10)/2;
+    position: relative;
+    aside{
+      width:$module-aside-width;
+      img{
+       width:$module-aside-width; height: $module-aside-width;border: 1px solid $module-border-color;
+      }
+    }
+    article{
+      position: absolute;top:0;margin-left:$module-aside-width;right:0;
+    a{
+        display:inline-block;width:50%; float: left;margin-bottom:10px;padding-left:10px;
+      span{
+        display: block; width:100%;background-color:$module-bg;text-align: center; line-height: $module-span-height;
+      }
+      }
 
     }
   }
-
 }
 /* */
 
 
+@media (min-width: 640px)
+{
+  .module-iterm{
+    position: relative;
+    $module-aside-width:120px;
+    aside{
+      width:$module-aside-width; overflow: hidden;
+      img{
+        width:100%; height: 100%;border: 1px solid $module-border-color;
+      }
+    }
+    article{
+      position: absolute;top:0;margin-left:$module-aside-width;right:0;
+      a{
+        display:inline-block;width:50%; float: left;margin-bottom: 5%;
+        span{
+          width:90%;background-color:$module-bg;margin-left:5%;height:0;padding-bottom: 25%; overflow: hidden; text-align: center;
+        }
+      }
 
+    }
+  }
+}
 
 
 
